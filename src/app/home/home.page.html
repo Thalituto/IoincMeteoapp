@@ -1,20 +1,74 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
+
+<ion-header>
+  <ion-toolbar color="primary">
+    <!-- Use ion-title with ion-avatar for a logo -->
     <ion-title>
-      Blank
+      <ion-avatar slot="start">
+      
+      </ion-avatar>
+      Météoapp
     </ion-title>
+
+    <ion-buttons slot="end">
+      <ion-label (click)="calculator()" style="cursor: pointer; color: white;">
+        Calculator
+      </ion-label>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Informations Météo</ion-card-title>
+    </ion-card-header>
 
-<ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+    <ion-card-content>
+      <!-- Affichage des informations météorologiques -->
+      <ion-item>
+        <ion-icon name="map" slot="start"></ion-icon>
+        <ion-label>
+          Ville: {{ cityname }}
+        </ion-label>
+      </ion-item>
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
-  </div>
+      <ion-item>
+        <ion-icon name="thermometer" slot="start"></ion-icon>
+        <ion-label>
+          Température: {{ temperature }}°C
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="water" slot="start"></ion-icon>
+        <ion-label>
+          Humidité: {{ humidity }}%
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="speedometer" slot="start"></ion-icon>
+        <ion-label>
+          Pression: {{ pressure }} hPa
+        </ion-label>
+      </ion-item>
+
+      <ion-item>
+        <ion-icon name="globe" slot="start"></ion-icon>
+        <ion-label>
+          Pays: {{ pays }}
+        </ion-label>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <!-- Champ de saisie pour la ville -->
+  <ion-item>
+    <ion-label position="stacked">Ville</ion-label>
+    <ion-input [(ngModel)]="ville" placeholder="Entrez une ville"></ion-input>
+  </ion-item>
+
+  <!-- Bouton de recherche -->
+  <ion-button expand="full" (click)="searchWeather()">
+    Rechercher
+  </ion-button>
 </ion-content>
